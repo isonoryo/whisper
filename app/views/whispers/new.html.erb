@@ -1,4 +1,17 @@
 <%= form_with(model: @whisper, local: true) do |form| %>
+  <% if @whisper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @whisper.errors.count %>エラーがあります！！</h2>
+      <ul>
+
+      <% @whisper.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
   <div class="whisper_content">
     <%= form.label :つぶやき %>
     <%= form.text_field :content %>
