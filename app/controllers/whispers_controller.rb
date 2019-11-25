@@ -1,5 +1,6 @@
 class WhispersController < ApplicationController
   def index
+    @whispers = Whisper.all
   end
 
   def new
@@ -7,7 +8,13 @@ class WhispersController < ApplicationController
   end
 
   def create
-    Whisper.create(content: params[:whisper][:content])
+    Whisper.create(whisper_params)
     redirect_to new_whisper_path
+  end
+
+  private
+
+  def whisper_params
+    params.require(:whisper).permit(:content)
   end
 end
