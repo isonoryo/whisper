@@ -1,0 +1,21 @@
+<%= form_with(model: @whisper, local: true) do |form| %>
+  <% if @whisper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @whisper.errors.count %>件のエラーがあります。</h2>
+      <ul>
+
+      <% @whisper.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="whisper_content">
+    <%= form.label :つぶやき %>
+    <%= form.text_field :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to "つぶやき一覧へ戻る", whispers_path %>

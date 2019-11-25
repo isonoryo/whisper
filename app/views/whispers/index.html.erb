@@ -1,5 +1,7 @@
 <h1>つぶやき一覧</h1>
 
+<p><%= notice %></p>
+
 <table>
   <tr>
     <th>つぶやき内容</th>
@@ -8,6 +10,8 @@
 <% @whispers.each do |whisper| %>
   <tr>
     <td><%= whisper.content %></td>
+    <td><%= link_to "つぶやきを編集する", edit_whisper_path(whisper.id), data: { confirm: '本当に編集していいですか？' }  %></td>
+    <td><%= link_to 'つぶやきを削除する', whisper_path(whisper.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }  %></td>
   </tr>
 <% end %>
 </table>
