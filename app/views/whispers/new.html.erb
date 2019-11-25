@@ -1,0 +1,7 @@
+<%= form_with(model: @whisper, local: true) do |form| %>
+  <div class="whisper_content">
+    <%= form.label :つぶやき %>
+    <%= form.text_field :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
