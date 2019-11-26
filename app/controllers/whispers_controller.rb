@@ -11,12 +11,16 @@ class WhispersController < ApplicationController
 
   def create
     @whisper = Whisper.new(whisper_params)
-    if @whisper.save
-      # 一覧画面へ遷移し、つぶやき完了の表示を行う
-      redirect_to new_whisper_path, notice: "つぶやきを受け付けました！"
-    else
-      # つぶやき入力フォームを再描画する。
+    if params[:back]
       render :new
+    else
+      if @whisper.save
+        # 一覧画面へ遷移し、つぶやき完了の表示を行う
+        redirect_to new_whisper_path, notice: "つぶやきを受け付けました！"
+      else
+      # つぶやき入力フォームを再描画する。
+        render :new
+      end
     end
   end
 
@@ -34,6 +38,11 @@ class WhispersController < ApplicationController
   def destroy
     @whisper.destroy
     redirect_to whispers_path, notice:"つぶやきを削除しました！！"
+  end
+
+  def confirm
+    @whisper = Whisper.new(whisper_params)
+    render :new if @whisper.invalid?
   end
 
   private
