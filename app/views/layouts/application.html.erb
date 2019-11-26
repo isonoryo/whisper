@@ -2,14 +2,22 @@
 <html>
   <head>
     <title>Whisper</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+     <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+    <header>
+      <ul>
+        <li>Whisper（つぶやき）</li>
+      </ul>
+    </header>
+
+  <%= yield %>
+    <footer>
+      <p>運営会社DIVE INTO CODE株式会社</p>
+      <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
+    </footer>
+    </body>
 </html>
